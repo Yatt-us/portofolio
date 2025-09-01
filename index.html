@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aliou Yattara — Développeur Web & Mobile</title>
+  <meta name="description" content="Portfolio de Aliou AG Moussa Yattara — Développeur Web & Mobile, passionné de Cloud. Projets, compétences, CV et contact." />
+  <meta property="og:title" content="Portfolio — Aliou Yattara" />
+  <meta property="og:description" content="Projets, compétences, CV et contact." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220; /* fallback for dark */
+      --text:#0c1222;
+      --muted:#5b677a;
+      --brand:#2463eb; /* bleu */
+      --brand-2:#22c55e; /* vert accent */
+      --card:#ffffff;
+      --ring:rgba(36,99,235,.25);
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+      --radius:16px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b1220;
+        --text:#e5e7eb;
+        --muted:#94a3b8;
+        --card:#0f172a;
+        --shadow:0 10px 30px rgba(0,0,0,.35);
+      }
+    }
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:saturate(1.5) blur(10px);border-bottom:1px solid rgba(2,6,23,.06)}
+    @media (prefers-color-scheme: dark){header{background:rgba(2,6,23,.6);border-color:rgba(148,163,184,.15)}}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .nav_links{display:flex;gap:22px}
+    .nav_links a{font-weight:500;color:var(--muted)}
+    .nav_links a:hover{color:var(--text)}
+    .nav_actions{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-weight:600;transition:.2s ease;box-shadow:var(--shadow)}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-ghost{background:transparent;border:1px solid rgba(2,6,23,.1)}
+    @media (prefers-color-scheme: dark){.btn-ghost{border-color:rgba(148,163,184,.2)}}
+
+    /* Hero */
+    .hero{padding:80px 0 40px}
+    .hero_inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted)}
+    .kicker .pill{display:inline-flex;align-items:center;gap:6px;background:rgba(36,99,235,.08);border:1px solid var(--ring);color:#2563eb;padding:6px 10px;border-radius:999px}
+    h1{font-size:clamp(32px,5vw,52px);line-height:1.1;margin:10px 0}
+    .typing{border-right:2px solid currentColor;white-space:nowrap;overflow:hidden}
+    .hero p{color:var(--muted);font-size:1.05rem}
+    .hero_actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .hero_card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .avatar{width:220px;height:220px;border-radius:18px;object-fit:cover;border:1px solid rgba(2,6,23,.06)}
+
+    /* Sections */
+    section{padding:70px 0}
+    .section_title{font-size:clamp(24px,4vw,36px);margin-bottom:20px}
+    .section_desc{color:var(--muted);margin-bottom:26px}
+
+    /* About */
+    .about_grid{display:grid;grid-template-columns:1fr 2fr;gap:26px}
+    .info_card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .info_list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:10px}
+    .info_item{padding:12px;border:1px dashed rgba(2,6,23,.12);border-radius:12px}
+
+    /* Skills */
+    .skills_grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+    .skill{background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+    .bar{height:10px;background:rgba(2,6,23,.08);border-radius:999px;overflow:hidden;margin-top:10px}
+    .bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+
+    /* Projects */
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+    .filter{padding:8px 14px;border-radius:999px;border:1px solid rgba(2,6,23,.12);cursor:pointer}
+    .filter.active{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border-color:transparent}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .card img{aspect-ratio:16/10;object-fit:cover}
+    .card_body{padding:14px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+    .tag{font-size:.8rem;padding:4px 10px;border-radius:999px;background:rgba(2,6,23,.06)}
+    .card_actions{display:flex;gap:10px;padding:14px}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(2,6,23,.12);background:transparent;color:inherit}
+    textarea{min-height:120px;resize:vertical}
+    .notice{font-size:.9rem;color:var(--muted)}
+
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid rgba(2,6,23,.12);color:var(--muted)}
+
+    /* Utilities */
+    .fade{opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease}
+    .fade.show{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width:900px){.hero_inner{grid-template-columns:1fr}.about_grid{grid-template-columns:1fr}.avatar{width:180px;height:180px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Navigation principale">
+        <a class="brand" href="#home" aria-label="Accueil">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Aliou Yattara</span>
+        </a>
+        <div class="nav_links" role="menubar">
+          <a role="menuitem" href="#about">À propos</a>
+          <a role="menuitem" href="#skills">Compétences</a>
+          <a role="menuitem" href="#projects">Projets</a>
+          <a role="menuitem" href="#contact">Contact</a>
+        </div>
+        <div class="nav_actions">
+          <a class="btn btn-ghost" id="themeToggle" href="#" aria-label="Basculer le thème">🌙</a>
+          <a class="btn btn-primary" href="#contact">Me contacter</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container hero_inner">
+      <div class="hero_card fade">
+        <div class="kicker"><span class="pill">Disponible</span> Développeur Web • Mobile • Cloud</div>
+        <h1>Salut, je suis <span class="typing" aria-label="Nom animé">Aliou Yattara</span></h1>
+        <p>Je conçois des applications web et mobiles performantes, avec une attention particulière à l’UX, à la qualité du code et au déploiement cloud.</p>
+        <div class="hero_actions">
+          <a class="btn btn-primary" href="#projects">Voir mes projets</a>
+          <a class="btn btn-ghost" href="assets/Aliou Ag Moussa YATTARA.pdf" download>📄 Télécharger mon CV</a>
+        </div>
+      </div>
+      <aside class="fade">
+        <img class="avatar" src="assets/profile.png" alt="Photo de profil d’Aliou Yattara" />
+        
+      </aside>
+    </div>
+  </main>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section_title">À propos</h2>
+      <p class="section_desc">Je suis un étudiant passionné par le développement web et mobile, ainsi que par le Cloud Computing. Motivé et autonome, je cherche à rejoindre une équipe dynamique pour contribuer à des projets concrets et acquérir plus d’expérience.</p>
+      <div class="about_grid">
+        <div class="info_card">
+          <h3>Ce que je recherche</h3>
+          <p>Un stage ou des missions freelance pour contribuer à des projets concrets et monter en compétences.</p>
+          <div class="info_list">
+            <div class="info_item">📍 Bamako, Mali</div>
+            <div class="info_item">📞 +223 62 01 50 68</div>
+            <div class="info_item">✉️ <a href="mailto:yaliouagmoussa@gmail.com">yaliouagmoussa@gmail.com</a></div>
+            <div class="info_item">🐙 <a href="https://github.com/yattdevellopper" target="_blank" rel="noreferrer">github.com/yattdevellopper</a></div>
+          </div>
+        </div>
+        <div class="info_card">
+          <h3>Tech & outils</h3>
+          <p><strong>Web :</strong> HTML, CSS, JavaScript, Python</p>
+          <p><strong>Frameworks :</strong> Django, Flutter</p>
+          <p><strong>Base de données :</strong> MySQL, SQLite</p>
+          <p><strong>Outils :</strong> GitHub, WordPress</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section_title">Compétences</h2>
+      <div class="skills_grid">
+        <div class="skill fade">
+          <div style="display:flex;justify-content:space-between"><strong>HTML/CSS</strong><span>90%</span></div>
+          <div class="bar"><span data-width="90%"></span></div>
+        </div>
+        <div class="skill fade">
+          <div style="display:flex;justify-content:space-between"><strong>JavaScript</strong><span>70%</span></div>
+          <div class="bar"><span data-width="70%"></span></div>
+        </div>
+        <div class="skill fade">
+          <div style="display:flex;justify-content:space-between"><strong>Python</strong><span>75%</span></div>
+          <div class="bar"><span data-width="75%"></span></div>
+        </div>
+        <div class="skill fade">
+          <div style="display:flex;justify-content:space-between"><strong>Django</strong><span>65%</span></div>
+          <div class="bar"><span data-width="65%"></span></div>
+        </div>
+        <div class="skill fade">
+          <div style="display:flex;justify-content:space-between"><strong>Flutter</strong><span>55%</span></div>
+          <div class="bar"><span data-width="55%"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section_title">Projets</h2>
+      <p class="section_desc">Voici une sélection courte et à jour. Chaque projet inclut un lien démo et le code source.</p>
+
+      <div class="filters" role="tablist" aria-label="Filtres de projets">
+        <button class="filter active" data-filter="all" role="tab">Tout</button>
+        <button class="filter" data-filter="web" role="tab">Web</button>
+        <button class="filter" data-filter="mobile" role="tab">Mobile</button>
+        <button class="filter" data-filter="django" role="tab">Django</button>
+      </div>
+
+      <div class="grid" id="projectGrid">
+        <!-- Project 1 -->
+        <article class="card proj web django">
+          <img src="assets/ecommerce.png" alt="Capture du site Ecommerce (Django)"/>
+          <div class="card_body">
+            <h3>Ecommerce — Django</h3>
+            <p>Site vitrine moderne réalisé avec Django, HTML & CSS. Déploiement cloud.</p>
+            <div class="tags">
+              <span class="tag">Django</span><span class="tag">HTML</span><span class="tag">CSS</span>
+            </div>
+          </div>
+          <div class="card_actions">
+            <a class="btn btn-ghost" href="https://mali-sug-1.onrender.com/" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">Code</a>
+          </div>
+         <!-- Project 2 -->
+        <article class="card proj web django">
+          <img src="assets/livraison.png" alt="Capture du site Ecommerce (Django)"/>
+          <div class="card_body">
+            <h3>Livraison — Django</h3>
+            <p>Site Web moderne réalisé avec Django, HTML & CSS. Déploiement cloud.</p>
+            <div class="tags">
+              <span class="tag">Django</span><span class="tag">HTML</span><span class="tag">CSS</span>
+            </div>
+          </div>
+          <div class="card_actions">
+            <a class="btn btn-ghost" href="https://github.com/yattdevellopper/Suivi_Lirasion" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">Code</a>
+          </div>
+
+        </article>
+        <!-- Project 2 -->
+        <article class="card proj web">
+          <img src="assets/gestionScolaire.png" alt="Capture de l’application de gestion scolaire"/>
+          <div class="card_body">
+            <h3>Gestion Scolaire</h3>
+            <p>Application de gestion des élèves et notes. Architecture MVC, base SQLite.</p>
+            <div class="tags"><span class="tag">Web</span><span class="tag">SQLite</span></div>
+          </div>
+          <div class="card_actions">
+            <a class="btn btn-ghost" href="https://github.com/yattdevellopper/LFAT" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn btn-primary" href="https://github.com/yattdevellopper/LFAT" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article class="card proj mobile">
+          <img src="assets/ciwara.png" alt="Capture de l’app mobile Ciwara (Flutter)"/>
+          <div class="card_body">
+            <h3>App Ciwara — Flutter</h3>
+            <p>Participation au développement de fonctionnalités clés et intégration d’API.</p>
+            <div class="tags"><span class="tag">Flutter</span><span class="tag">Mobile</span></div>
+          </div>
+          <div class="card_actions">
+            <a class="btn btn-ghost" href="https://apps.apple.com/us/app/ciwara/id6743376815" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn btn-primary" href="https://apps.apple.com/us/app/ciwara/id6743376815" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section_title">Contact</h2>
+      <div class="grid" style="grid-template-columns:1.1fr .9fr;align-items:start">
+        <div class="info_card">
+          <h3>Parlons de votre projet ✉️</h3>
+          <p>Je réponds rapidement. Vous pouvez aussi m’écrire directement : <a href="mailto:yaliouagmoussa@gmail.com">yaliouagmoussa@gmail.com</a></p>
+          <p class="notice">Ce formulaire utilise EmailJS. Remplace l’ID de service et l’ID de modèle ci‑dessous par les tiens.</p>
+          <form id="contactForm">
+            <label for="name">Nom</label>
+            <input id="name" name="name" type="text" placeholder="Votre nom" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Votre email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+            <div id="formStatus" class="notice" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+        <div class="info_card">
+          <h3>Réseaux</h3>
+          <ul>
+            <li>GitHub : <a href="https://github.com/yattdevellopper" target="_blank" rel="noreferrer">github.com/yattdevellopper</a></li>
+            <li>LinkedIn : <a href="https://www.linkedin.com/in/yattus-yattus-a61263342" target="_blank" rel="noreferrer">https://www.linkedin.com/in/yattus-yattus-a61263342/<li></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" >© <span id="year"></span> Aliou Yattara — Tous droits réservés.</div>
+  </footer>
+
+  <script>
+    // ===== Thème (préférence + stockage) =====
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const storageKey = 'prefers-dark';
+    function setTheme(dark){
+      if(dark){
+        root.style.setProperty('--bg','#0b1220');
+        root.style.setProperty('--text','#e5e7eb');
+        root.style.setProperty('--muted','#94a3b8');
+        root.style.setProperty('--card','#0f172a');
+      }else{
+        root.style.setProperty('--bg','#ffffff');
+        root.style.setProperty('--text','#0c1222');
+        root.style.setProperty('--muted','#5b677a');
+        root.style.setProperty('--card','#ffffff');
+      }
+    }
+    const saved = localStorage.getItem(storageKey);
+    if(saved!==null) setTheme(saved==='1');
+    themeBtn.addEventListener('click', (e)=>{e.preventDefault(); const isDark = (localStorage.getItem(storageKey)==='1'); localStorage.setItem(storageKey, isDark?'0':'1'); setTheme(!isDark);});
+
+    // ===== Machine à écrire =====
+    const phrases = ["Aliou AG Moussa Yattara","Développeur Web & Mobile","Cloud Enthusiast"]; 
+    const target = document.querySelector('.typing');
+    let pi=0, ci=0; let typing=true; const speed=70; const pause=1400;
+    function tick(){
+      const text = phrases[pi];
+      if(typing){
+        target.textContent = text.slice(0, ++ci);
+        if(ci===text.length){ typing=false; setTimeout(tick,pause); return; }
+      } else {
+        target.textContent = text.slice(0, --ci);
+        if(ci===0){ typing=true; pi=(pi+1)%phrases.length; }
+      }
+      setTimeout(tick, typing?speed:40);
+    }
+    tick();
+
+    // ===== Révélation au scroll =====
+    const fades = document.querySelectorAll('.fade');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('show'); io.unobserve(en.target);} });
+    },{threshold:.15});
+    fades.forEach(el=>io.observe(el));
+
+    const bars = document.querySelectorAll('.bar span');
+    const ioBars = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ en.target.style.width = en.target.dataset.width; ioBars.unobserve(en.target);} });
+    },{threshold:.6});
+    bars.forEach(b=>ioBars.observe(b));
+
+    const filters = document.querySelectorAll('.filter');
+    const projects = document.querySelectorAll('.proj');
+    filters.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelector('.filter.active')?.classList.remove('active');
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        projects.forEach(card=>{
+          card.style.display = (f==='all'||card.classList.contains(f))? 'flex':'none';
+        })
+      })
+    })
+
+
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      status.textContent = 'Envoi en cours…';
+      try{
+        const SERVICE_ID = '';
+        const TEMPLATE_ID = '';
+        const PUBLIC_KEY = '';
+        if(!SERVICE_ID||!TEMPLATE_ID||!PUBLIC_KEY){
+          window.location.href = `mailto:yaliouagmoussa@gmail.com?subject=Contact%20Portfolio&body=${encodeURIComponent(`${data.name} (${data.email})\n\n${data.message}`)}`;
+          status.textContent = 'Ouverture de votre client mail…';
+          return;
+        }
+        
+      }catch(err){
+        status.textContent = "Impossible d'envoyer pour le moment.";
+      }
+    })
+
+    // ===== Année dynamique =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
