@@ -1,0 +1,248 @@
+/* ==========================================================================
+   MODULE 3D DES COMPÉTENCES (SPHÈRE WEBGL & TILT HOLOGRAPHIQUE)
+   ========================================================================== */
+
+.skills-3d-wrapper {
+  margin-bottom: 60px;
+}
+
+.skills-3d-box {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: radial-gradient(circle at center, rgba(6, 182, 212, 0.06) 0%, rgba(10, 15, 29, 0.7) 70%);
+  border: var(--border-cyber);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card), inset 0 0 50px rgba(6, 182, 212, 0.05);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#skills3dCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+#skills3dCanvas:active {
+  cursor: grabbing;
+}
+
+/* HUD Holographique d'information en temps réel */
+.skills-3d-hud {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  max-width: 480px;
+  background: rgba(2, 6, 23, 0.85);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), var(--gradient-glow-soft);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.skills-3d-hud.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.hud-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-badge {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: var(--brand-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hud-level {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.hud-desc {
+  font-size: 0.85rem;
+  color: var(--muted-dark);
+  line-height: 1.5;
+}
+
+/* Badge indicateur de commande en haut de la boîte 3D */
+.skills-3d-indicator {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--brand-primary);
+  background: rgba(2, 6, 23, 0.7);
+  border: var(--border-cyber);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  z-index: 10;
+  letter-spacing: 0.02em;
+}
+
+.skills-3d-indicator i {
+  animation: spinSlow 8s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Boutons de contrôle 3D */
+.skills-3d-controls {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.control-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(2, 6, 23, 0.75);
+  border: var(--border-cyber);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+}
+
+.control-btn:hover {
+  background: var(--brand-primary);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: var(--gradient-glow-soft);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   CARTES HOLOGRAPHIQUES AVEC EFFET 3D TILT & PARALLAXE
+   ========================================================================== */
+
+.skills_grid {
+  perspective: 1000px;
+}
+
+.skill-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card .skill-icon {
+  transform: translateZ(35px);
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+.skill-card .skill-info {
+  transform: translateZ(25px);
+}
+
+.skill-card .bar {
+  transform: translateZ(30px);
+}
+
+.skill-card .skill-desc {
+  transform: translateZ(18px);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* Reflet spéculaire dynamique sur les cartes 3D */
+.skill-card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+}
+
+.skill-card:hover .skill-card-glare {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE POUR LE MODULE 3D
+   ========================================================================== */
+@media (max-width: 768px) {
+  .skills-3d-box {
+    height: 380px;
+  }
+
+  .skills-3d-hud {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 12px 16px;
+  }
+
+  .hud-desc {
+    display: none; /* Alléger le HUD sur petit écran */
+  }
+
+  .skills-3d-indicator {
+    left: 16px;
+    top: 16px;
+    font-size: 0.75rem;
+  }
+
+  .skills-3d-controls {
+    right: 16px;
+    top: 16px;
+  }
+}
+

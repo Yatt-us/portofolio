@@ -8,11 +8,11 @@
 
 <p>
 
-<img src="https://komarev.com/ghpvc/?username=yattus&style=for-the-badge&color=blue" />
+<img src="https://komarev.com/ghpvc/?username=Yatt-us&style=for-the-badge&color=blue" />
 
-<img src="https://img.shields.io/github/followers/yattus?style=for-the-badge&logo=github"/>
+<img src="https://img.shields.io/github/followers/Yatt-us?style=for-the-badge&logo=github"/>
 
-<img src="https://img.shields.io/github/stars/yattus?style=for-the-badge&logo=github"/>
+<img src="https://img.shields.io/github/stars/Yatt-us?style=for-the-badge&logo=github"/>
 
 </p>
 
@@ -35,7 +35,7 @@ class Aliou {
         "TypeScript",
         "JavaScript",
         "Python",
-        "Go"
+        
     };
 
     String[] frameworks = {
@@ -52,9 +52,11 @@ class Aliou {
 
 - 💻 Passionate about **Software Engineering**
 - 📱 Flutter Mobile Developer
-- 🌐 Full Stack Web Developer
-- ☁️ Learning Cloud & DevOps
-- 🚀 Always building useful projects
+- 🌐 Full Stack Web Developer (Spring Boot, Angular, Django)
+- ☁️ Cloud & DevOps Enthusiast (AWS, Docker)
+- 🎨 UI/UX Design avec **Figma**
+- 🛠️ Administration Réseau & Systèmes Linux
+- 🚀 Always building useful & scalable projects
 - 📚 Continuous learner
 
 ---
@@ -91,9 +93,9 @@ class Aliou {
 
 <div align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=yattus&show_icons=true&theme=tokyonight&hide_border=true"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=Yatt-us&show_icons=true&theme=tokyonight&hide_border=true"/>
 
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yattus&layout=compact&theme=tokyonight&hide_border=true"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Yatt-us&layout=compact&theme=tokyonight&hide_border=true"/>
 
 </div>
 
@@ -103,7 +105,7 @@ class Aliou {
 
 <div align="center">
 
-<img src="https://streak-stats.demolab.com?user=yattus&theme=tokyonight&hide_border=true"/>
+<img src="https://streak-stats.demolab.com?user=Yatt-us&theme=tokyonight&hide_border=true"/>
 
 </div>
 
@@ -113,7 +115,7 @@ class Aliou {
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=yattus&theme=tokyo-night&hide_border=true"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Yatt-us&theme=tokyo-night&hide_border=true"/>
 
 </div>
 
@@ -123,7 +125,7 @@ class Aliou {
 
 <div align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=yattus&theme=tokyonight&no-frame=true&column=4"/>
+<img src="https://github-profile-trophy.vercel.app/?username=Yatt-us&theme=tokyonight&no-frame=true&column=4"/>
 
 </div>
 
@@ -133,10 +135,12 @@ class Aliou {
 
 | Project | Description |
 |----------|-------------|
+| 📱 **Ciwara App** | Cross-platform mobile application on Apple App Store built with Flutter & Dart |
 | ☁️ **YattyCloud** | Secure cloud storage platform built with Spring Boot & Angular |
-| 📶 **WiFi Hotspot** | Paid WiFi management using MikroTik & Mobile Money |
-| 📱 **Flutter Apps** | Cross-platform mobile applications |
-| 🌍 **AWS Projects** | Cloud deployment & infrastructure |
+| 🛍️ **E-commerce Platform** | Modern Django & Python e-commerce application |
+| 📦 **Suivi de Livraison** | Real-time logistics tracking system with Django |
+| 🎓 **LFAT School Management** | Academic and student administration system |
+| 🌍 **AWS Cloud Infrastructure** | Scalable cloud deployments & infrastructure |
 
 ---
 
@@ -144,11 +148,11 @@ class Aliou {
 
 <div align="center">
 
-<a href="https://github.com/yattus">
+<a href="https://github.com/Yatt-us">
 <img src="https://skillicons.dev/icons?i=github"/>
 </a>
 
-<a href="https://linkedin.com">
+<a href="https://www.linkedin.com/in/yattus-yattus-a61263342">
 <img src="https://skillicons.dev/icons?i=linkedin"/>
 </a>
 
