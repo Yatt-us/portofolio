@@ -135,6 +135,13 @@ class Aliou {
 
 | Project | Description |
 |----------|-------------|
+| 🍔 **Brooklyn Burger** | 3D showcase site with WhatsApp ordering (Three.js, GSAP, Vite) |
+| 🏠 **AYA Immobilière** | 3D real-estate agency website, Bamako |
+| 🚗 **Peugeot Mali** | 3D virtual showroom concept |
+| 🥤 **Double Seven · 3X Energy** | 3D scroll websites for energy drink brands |
+| 💧 **Diago · 🍵 Achoura** | 3D brand websites (mineral water, green tea) |
+| 🍗 **Arbab Chicken** | 3D restaurant website with 3D dish renders |
+| ☀️ **TK HYBRID POD** | Bilingual FR/EN modular website |
 | 📱 **Ciwara App** | Cross-platform mobile application on Apple App Store built with Flutter & Dart |
 | ☁️ **YattyCloud** | Secure cloud storage platform built with Spring Boot & Angular |
 | 🛍️ **E-commerce Platform** | Modern Django & Python e-commerce application |

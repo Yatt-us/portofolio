@@ -38,9 +38,9 @@ export function initProjectsRenderer() {
       article.innerHTML = `
         <div class="card-img-wrapper">
           <img src="${project.image}" alt="${project.title}" loading="lazy" />
-          <div class="card-overlay">
+          ${project.demoUrl || project.codeUrl ? `<div class="card-overlay">
             ${project.demoUrl ? `<a class="btn btn-primary" href="${project.demoUrl}" target="_blank" rel="noreferrer"><i class="fa-solid fa-eye"></i> Voir le projet</a>` : `<a class="btn btn-primary" href="${project.codeUrl}" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> Code Source</a>`}
-          </div>
+          </div>` : ''}
         </div>
         <div class="card_body">
           <div>

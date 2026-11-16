@@ -69,6 +69,16 @@ export const skillsData = [
     description: 'SPAs réactives, RxJS, composants modulaires, injection de dépendances et TypeScript avancé.'
   },
   {
+    id: 'threejs',
+    name: 'Three.js & GSAP',
+    category: 'frontend',
+    level: '80%',
+    color: '#049EF4',
+    accentColor: '#7c3aed',
+    icon: 'fa-solid fa-cube',
+    description: 'Sites 3D à défilement : scènes WebGL, shaders, animations GSAP/ScrollTrigger, projets Vite modulaires.'
+  },
+  {
     id: 'web',
     name: 'HTML5 / CSS3 / Modern Web',
     category: 'frontend',
