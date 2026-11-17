@@ -10,6 +10,7 @@ import { initSkillsSphere3D } from './modules/skillsSphere3D.js';
 import { initProfileOrbit3D } from './modules/profileOrbit3D.js';
 import { initContactForm } from './modules/contact.js';
 import { initMobileNav } from './modules/mobileNav.js';
+import { initHeader } from './modules/header.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -21,4 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimations();
   initContactForm();
   initMobileNav();
+  initHeader();
 });

@@ -55,6 +55,8 @@ body.light-theme {
   --muted: var(--muted-light);
   --border-cyber: var(--border-light);
   --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-header: rgba(255, 255, 255, 0.58);
+  --glass-header-scrolled: rgba(255, 255, 255, 0.74);
   --scanline-opacity: 0.1;
   --grid-opacity: 0.02;
 }
@@ -67,6 +69,8 @@ body, body.dark-theme {
   --muted: var(--muted-dark);
   --border-cyber: var(--border-dark);
   --glass-bg: rgba(2, 6, 23, 0.85);
+  --glass-header: rgba(2, 6, 23, 0.52);
+  --glass-header-scrolled: rgba(2, 6, 23, 0.7);
   --scanline-opacity: 0.25;
   --grid-opacity: 0.04;
 }

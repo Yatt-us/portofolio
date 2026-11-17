@@ -11,20 +11,49 @@ section {
 /* ==========================================================================
    1. NAVIGATION & EN-TÊTE
    ========================================================================== */
+html {
+  scroll-padding-top: 88px; /* les ancres ne passent pas sous l'entête */
+}
+
+/* Entête « verre dépoli » : se masque en descendant, revient en remontant */
 header {
   position: fixed;
   top: 0; left: 0; width: 100%;
   z-index: 1000;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass-header, var(--glass-bg));
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
   border-bottom: var(--border-cyber);
-  transition: var(--transition-cyber);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  will-change: transform;
 }
 
 header.scrolled {
-  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.12);
+  background: var(--glass-header-scrolled, var(--glass-bg));
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   padding: 4px 0;
+}
+
+header.header-hidden {
+  transform: translateY(-100%);
+}
+
+/* Barre de progression de lecture */
+.read-progress {
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 100%; height: 3px;
+  background: var(--gradient-main);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.65);
+  transform-origin: left center;
+  transform: scaleX(var(--p, 0));
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header { transition: none; }
 }
 
 nav {

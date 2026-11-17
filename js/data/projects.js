@@ -23,9 +23,9 @@ export const projectsData = [
     image: 'assets/tk-hub.webp',
     categories: ['web', '3d'],
     tags: ['Vite', 'GSAP', 'Lenis', 'i18n FR/EN'],
-    demoUrl: null,
+    demoUrl: 'https://tk-hub-brower.onrender.com/',
     codeUrl: 'https://github.com/Yatt-us/Tk-Hub-brower',
-    demoLabel: null,
+    demoLabel: 'Démo Live',
     codeLabel: 'Code'
   },
   {
@@ -35,9 +35,9 @@ export const projectsData = [
     image: 'assets/arbachicken.webp',
     categories: ['web', '3d'],
     tags: ['Three.js', 'GSAP', 'Vite', 'Responsive'],
-    demoUrl: null,
+    demoUrl: 'https://arba-chicken.onrender.com/',
     codeUrl: null,
-    demoLabel: null,
+    demoLabel: 'Démo Live',
     codeLabel: null
   },
   {
@@ -95,9 +95,9 @@ export const projectsData = [
     image: 'assets/3x-energy.webp',
     categories: ['web', '3d'],
     tags: ['Three.js', 'GSAP', 'Vite', 'Marque'],
-    demoUrl: null,
+    demoUrl: 'https://threexboisson.onrender.com/',
     codeUrl: null,
-    demoLabel: null,
+    demoLabel: 'Démo Live',
     codeLabel: null
   },
   {
@@ -107,9 +107,9 @@ export const projectsData = [
     image: 'assets/double-seven.webp',
     categories: ['web', '3d'],
     tags: ['Three.js', 'GSAP', 'Vite', 'Marque'],
-    demoUrl: null,
+    demoUrl: 'https://doubleseven.onrender.com/',
     codeUrl: null,
-    demoLabel: null,
+    demoLabel: 'Démo Live',
     codeLabel: null
   },
   // ---- Applications et plateformes ----
