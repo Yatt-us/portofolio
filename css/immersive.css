@@ -1,0 +1,299 @@
+/* ==========================================================================
+   EXPÉRIENCE IMMERSIVE
+   Scène 3D en fond, intro de démarrage, hero plein écran, rôles tapés
+   ========================================================================== */
+
+/* Scène 3D (globe réseau) fixée derrière tout le site */
+#immersiveScene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+  opacity: 0;
+}
+
+/* Avec la scène 3D, la grille de fond se fait plus discrète */
+body.has-scene .cyber-grid {
+  opacity: 0.5;
+}
+
+/* Accessibilité : texte lu par les lecteurs d'écran uniquement */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------- HERO */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.hero-name {
+  display: block;
+  margin-top: 22px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+  margin-top: 6px;
+}
+
+.hero .hero-roles {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  color: var(--brand-primary);
+  margin: -2px 0 22px;
+  min-height: 1.7em;
+}
+
+.hero-roles .prompt {
+  color: var(--grad-2);
+  margin-right: 4px;
+}
+
+.hero-roles .caret {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: -0.18em;
+  background: currentColor;
+  animation: caretBlink 1s steps(1) infinite;
+}
+
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+/* Bouton CV lisible par-dessus la scène 3D */
+.hero .btn-ghost {
+  border: 1px solid var(--border-cyber);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Colonne droite : le globe 3D est dessiné derrière, on y pose des pastilles HUD */
+.hero_visual {
+  position: relative;
+  min-height: 480px;
+  pointer-events: none;
+}
+
+.hud-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  border: 1px solid var(--border-cyber);
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+  animation: chipFloat 6s ease-in-out infinite;
+}
+
+.hud-chip i {
+  color: var(--brand-primary);
+}
+
+.hud-chip:nth-child(1) { top: 6%;  left: 0; }
+.hud-chip:nth-child(2) { top: 48%; right: -4%; animation-delay: -2s; }
+.hud-chip:nth-child(3) { bottom: 4%; left: 10%; animation-delay: -4s; }
+
+@keyframes chipFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Indicateur de défilement */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--transition-fast);
+}
+
+.scroll-cue:hover {
+  color: var(--brand-primary);
+}
+
+.scroll-cue .mouse {
+  position: relative;
+  width: 24px;
+  height: 38px;
+  border: 2px solid currentColor;
+  border-radius: 14px;
+  opacity: 0.8;
+}
+
+.scroll-cue .mouse::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--brand-primary);
+  animation: wheelDown 1.8s ease-in-out infinite;
+}
+
+@keyframes wheelDown {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+
+/* ---------------------------------------------------------------- INTRO */
+html.booting,
+html.booting body {
+  overflow: hidden;
+}
+
+/* Masque posé avant le chargement du JS pour éviter un flash de la page */
+html.booting body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: #020617;
+  z-index: 9999;
+}
+
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(var(--grad-glow-rgb), 0.08), transparent 60%),
+    #020617;
+  cursor: pointer;
+  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+}
+
+.boot.boot-done {
+  opacity: 0;
+  transform: scale(1.04);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.boot-inner {
+  width: min(640px, 100%);
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: clamp(0.8rem, 2.4vw, 0.95rem);
+  color: #cbd5e1;
+}
+
+.boot-line {
+  margin-bottom: 6px;
+  white-space: pre-wrap;
+  animation: bootIn 0.25s ease forwards;
+}
+
+.boot-line .ok {
+  color: #22c55e;
+}
+
+.boot-line.final {
+  margin-top: 16px;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.boot-line.final span {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.boot-bar {
+  height: 3px;
+  margin-top: 22px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.boot-bar span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--gradient-main);
+  transition: width 0.3s ease;
+}
+
+.boot-skip {
+  margin-top: 14px;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+@keyframes bootIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------- RESPONSIVE */
+@media (max-width: 968px) {
+  .hero_visual {
+    display: none;
+  }
+
+  .scroll-cue {
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-chip,
+  .hero-roles .caret,
+  .scroll-cue .mouse::after,
+  .cyber-grid {
+    animation: none;
+  }
+}

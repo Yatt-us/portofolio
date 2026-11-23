@@ -25,9 +25,20 @@
   --brand-emerald: #10b981;      /* Vert Terminal */
 
   /* Gradients & Lueurs */
-  --gradient-main: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #a855f7 100%);
-  --gradient-glow: 0 0 30px rgba(6, 182, 212, 0.4);
-  --gradient-glow-soft: 0 0 20px rgba(6, 182, 212, 0.2);
+  /* Pour changer le dégradé du site : modifiez --grad-1/2/3 et --grad-glow-rgb (couleur du halo).
+     Préréglages :
+       Coucher de soleil (actif) : #f97316 / #f43f5e / #d946ef   glow 244, 63, 94
+       Émeraude & or             : #10b981 / #84cc16 / #fbbf24   glow 132, 204, 22
+       Cyber (ancien)            : #06b6d4 / #3b82f6 / #a855f7   glow 6, 182, 212 */
+  --grad-1: #f97316;             /* Orange */
+  --grad-2: #f43f5e;             /* Rose corail */
+  --grad-3: #d946ef;             /* Fuchsia */
+  --grad-glow-rgb: 244, 63, 94;  /* Halo des éléments en dégradé */
+  --gradient-main: linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 50%, var(--grad-3) 100%);
+  --gradient-glow: 0 0 30px rgba(var(--grad-glow-rgb), 0.4);
+  --accent-glow: 0 0 30px rgba(6, 182, 212, 0.4);        /* halo cyan des éléments d'accent (hors dégradé) */
+  --gradient-glow-soft: 0 0 20px rgba(var(--grad-glow-rgb), 0.2);
+  --accent-glow-soft: 0 0 20px rgba(6, 182, 212, 0.2);
 
   /* Ombres */
   --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5);

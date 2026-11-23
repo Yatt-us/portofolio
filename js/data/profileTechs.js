@@ -3,6 +3,20 @@
  */
 export const profileTechsData = [
   {
+    id: 'websec',
+    name: 'Cybersécurité',
+    icon: 'fa-solid fa-shield-halved',
+    color: '#22c55e',
+    glow: 'rgba(34, 197, 94, 0.6)'
+  },
+  {
+    id: 'pentest',
+    name: 'Kali Linux',
+    icon: 'fa-brands fa-linux',
+    color: '#367BF0',
+    glow: 'rgba(54, 123, 240, 0.6)'
+  },
+  {
     id: 'flutter',
     name: 'Flutter',
     icon: 'fa-solid fa-mobile-screen',
@@ -50,13 +64,6 @@ export const profileTechsData = [
     icon: 'fa-solid fa-mug-hot',
     color: '#fb923c',
     glow: 'rgba(251, 146, 60, 0.6)'
-  },
-  {
-    id: 'python',
-    name: 'Python',
-    icon: 'fa-brands fa-python',
-    color: '#38bdf8',
-    glow: 'rgba(56, 189, 248, 0.6)'
   }
 ];
 

@@ -2,8 +2,12 @@
  * Point d'entrée JavaScript Principal
  * Initialise l'ensemble des modules du portfolio
  */
+import { initBoot } from './modules/boot.js';
 import { initTheme } from './modules/theme.js';
 import { initParticles } from './modules/particles.js';
+import { initImmersiveScene } from './modules/immersiveScene3D.js';
+import { initTypedRoles } from './modules/typedRoles.js';
+import { initScramble } from './modules/scrambleText.js';
 import { initAnimations } from './modules/animations.js';
 import { initProjectsRenderer, initSkillsRenderer } from './modules/projectsRenderer.js';
 import { initSkillsSphere3D } from './modules/skillsSphere3D.js';
@@ -13,13 +17,19 @@ import { initMobileNav } from './modules/mobileNav.js';
 import { initHeader } from './modules/header.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  initBoot();
   initTheme();
   initParticles();
+  initImmersiveScene().catch(() => {
+    document.getElementById('immersiveScene')?.remove();
+  });
+  initTypedRoles();
   initProfileOrbit3D();
   initSkillsSphere3D();
   initSkillsRenderer();
   initProjectsRenderer();
   initAnimations();
+  initScramble();
   initContactForm();
   initMobileNav();
   initHeader();

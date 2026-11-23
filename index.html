@@ -4,14 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <title>Aliou AG Moussa Yattara — Développeur Full-Stack, Mobile & Cloud</title>
-  <meta name="description" content="Portfolio professionnel de Aliou AG Moussa Yattara — Développeur Full-Stack (Spring Boot, Angular, Django), Mobile Flutter et Cloud AWS." />
+  <title>Aliou AG Moussa Yattara — Cybersécurité & Développeur Full-Stack</title>
+  <meta name="description" content="Portfolio d'Aliou AG Moussa Yattara — Cybersécurité (audit, tests d'intrusion, sécurité réseau) et développement Full-Stack (Spring Boot, Angular, Django), mobile Flutter et Cloud AWS." />
   <meta name="author" content="Aliou AG Moussa Yattara" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
   <!-- Open Graph / Meta Réseaux Sociaux -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Aliou AG Moussa Yattara — Développeur Full-Stack & Mobile" />
-  <meta property="og:description" content="Découvrez mes projets web, mobile (Flutter) et cloud ainsi que mes compétences techniques." />
+  <meta property="og:title" content="Aliou AG Moussa Yattara — Cybersécurité & Développeur Full-Stack" />
+  <meta property="og:description" content="Découvrez mes compétences en cybersécurité et mes projets web, mobile (Flutter) et cloud." />
   <meta property="og:image" content="assets/profile.png" />
 
   <!-- Google Fonts & FontAwesome -->
@@ -22,6 +23,16 @@
 
   <!-- Feuilles de Style Modulaires -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Intro immersive : une fois par session, jamais si l'utilisateur réduit les animations -->
+  <script>
+    try {
+      if (!sessionStorage.getItem('yattara-boot') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('booting');
+        setTimeout(function () { document.documentElement.classList.remove('booting'); }, 6000);
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body class="dark-theme">
 
@@ -29,24 +40,42 @@
   <div class="cursor-glow" id="cursorGlow"></div>
   <canvas id="canvas-particles"></canvas>
   <div class="cyber-grid"></div>
+  <canvas id="immersiveScene" aria-hidden="true"></canvas>
 
   <!-- ==========================================================================
        HEADER & NAVIGATION
        ========================================================================== -->
   <header id="header">
     <div class="container">
-      <nav aria-label="Navigation principale">
-        <a class="brand" href="#home" aria-label="Accueil">
-          <div class="brand-logo-box">AY</div>
-          <span>Aliou AG Moussa Yattara</span>
+      <nav class="nav-shell" aria-label="Navigation principale">
+        <a class="brand" href="#home" aria-label="Accueil — Aliou AG Moussa Yattara">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <defs>
+                <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" style="stop-color: var(--grad-1)" />
+                  <stop offset="0.5" style="stop-color: var(--grad-2)" />
+                  <stop offset="1" style="stop-color: var(--grad-3)" />
+                </linearGradient>
+              </defs>
+              <path class="brand-hex" d="M24 3 L42 13.5 V34.5 L24 45 L6 34.5 V13.5 Z" />
+              <path class="brand-hex-inner" d="M24 9 L36.8 16.5 V31.5 L24 39 L11.2 31.5 V16.5 Z" />
+            </svg>
+            <span class="brand-initials">AY</span>
+          </span>
+          <span class="brand-text">
+            <strong>Aliou Yattara</strong>
+            <small>// cybersécurité &amp; dev</small>
+          </span>
         </a>
 
-        <div class="nav_links" id="navLinks" role="menubar">
-          <a role="menuitem" href="#about" class="nav-link">À propos</a>
-          <a role="menuitem" href="#skills" class="nav-link">Compétences</a>
-          <a role="menuitem" href="#projects" class="nav-link">Projets</a>
-          <a role="menuitem" href="#github-stats" class="nav-link">Statistiques</a>
-          <a role="menuitem" href="#contact" class="nav-link">Contact</a>
+        <div class="nav_links" id="navLinks">
+          <span class="nav-indicator" aria-hidden="true"></span>
+          <a href="#about"><span class="nav-num">01</span>À propos</a>
+          <a href="#skills"><span class="nav-num">02</span>Compétences</a>
+          <a href="#projects"><span class="nav-num">03</span>Projets</a>
+          <a href="#github-stats"><span class="nav-num">04</span>Statistiques</a>
+          <a href="#contact"><span class="nav-num">05</span>Contact</a>
         </div>
 
         <div class="nav_actions">
@@ -54,17 +83,18 @@
             <i class="fa-solid fa-moon" id="themeIcon"></i>
           </button>
 
-          <a class="btn btn-primary" href="#contact">
+          <a class="btn btn-primary nav-cta" href="#contact">
             Discutons <i class="fa-solid fa-arrow-right"></i>
           </a>
 
-          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
+
+        <div class="read-progress" id="readProgress" aria-hidden="true"></div>
       </nav>
     </div>
-    <div class="read-progress" id="readProgress" aria-hidden="true"></div>
   </header>
 
   <!-- ==========================================================================
@@ -74,44 +104,30 @@
     <div class="container hero_inner">
       <div class="hero_content fade">
         <div class="kicker">
-          <span class="pill"><i class="fa-solid fa-bolt"></i> Mode Cybernétique Actif — Disponible</span>
+          <span class="pill"><i class="fa-solid fa-shield-halved"></i> Disponible — Cybersécurité & Développement</span>
         </div>
-        <h1>Architecte & Développeur <span class="gradient-text">Full-Stack & Mobile</span></h1>
-        <p>Conception d'écosystèmes numériques hautement scalables, combinant la robustesse du backend (Spring Boot, Django), l'élégance du web et mobile (Angular, Flutter) et la fiabilité du Cloud (AWS, Docker).</p>
+        <span class="hero-name">Aliou AG Moussa Yattara</span>
+        <h1><span class="gradient-text">Cybersécurité</span><br>& Développement Full-Stack</h1>
+        <p class="hero-roles" aria-hidden="true"><span class="prompt">root@yattara:~#</span> <span id="heroRoles"></span><span class="caret"></span></p>
+        <p class="sr-only">Audit et tests d'intrusion, sécurité réseau et systèmes Linux, applications web et mobiles sécurisées, cloud et DevOps.</p>
+        <p>Je sécurise les systèmes et je développe des applications web et mobiles sûres dès la conception : audit de vulnérabilités, durcissement de serveurs Linux, backend Spring Boot & Django, interfaces Angular & Flutter, déploiement AWS & Docker.</p>
         <div class="hero_actions">
           <a class="btn btn-primary" href="#projects">Explorer mes projets <i class="fa-solid fa-code"></i></a>
           <a class="btn btn-ghost" href="assets/Aliou Ag Moussa YATTARA.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV</a>
         </div>
       </div>
 
-      <div class="hero_visual fade">
-        <div class="terminal-card">
-          <div class="terminal-header">
-            <div class="dot-red"></div>
-            <div class="dot-yellow"></div>
-            <div class="dot-green"></div>
-            <span class="terminal-title">yattara@quantum-core ~ zsh</span>
-          </div>
-          <div class="terminal-body">
-            <div class="terminal-line">
-              <span class="t-prompt">➜</span> <span class="t-cmd">neofetch</span>
-            </div>
-            <div class="terminal-line" style="color: var(--muted); margin-bottom: 12px;">
-              OS: CyberLinux x86_64 | Host: Yattara Portfolio v3.0
-            </div>
-            <div class="terminal-line">
-              <span class="t-keyword">const</span> coreStack = [<span class="t-string">'Flutter'</span>, <span class="t-string">'Spring Boot'</span>, <span class="t-string">'Angular'</span>, <span class="t-string">'Django'</span>, <span class="t-string">'AWS'</span>];
-            </div>
-            <div class="terminal-line">
-              <span class="t-keyword">status</span> = <span class="t-string">"Engineering reliable & scalable software..."</span>;
-            </div>
-            <div class="terminal-line" style="margin-top: 12px;">
-              <span class="t-prompt">➜</span> <span class="t-cmd">ping</span> <span class="t-string">production.service --success=100%</span>
-            </div>
-          </div>
-        </div>
+      <!-- Le globe 3D (canvas #immersiveScene) s'affiche derrière cette colonne -->
+      <div class="hero_visual fade" aria-hidden="true">
+        <span class="hud-chip"><i class="fa-solid fa-shield-halved"></i> Secure by design</span>
+        <span class="hud-chip"><i class="fa-solid fa-lock"></i> Chiffrement & authentification</span>
+        <span class="hud-chip"><i class="fa-solid fa-bug"></i> Audit de vulnérabilités</span>
       </div>
     </div>
+    <a class="scroll-cue" href="#about" aria-label="Défiler vers la suite">
+      <span class="mouse"></span>
+      <span>Explorer</span>
+    </a>
   </main>
 
   <!-- ==========================================================================
@@ -136,8 +152,8 @@
           <span class="orbit-badge-hint"><i class="fa-solid fa-arrows-spin"></i> Écosystème Orbital 3D</span>
         </div>
         <div class="info_card fade">
-          <h3 style="font-size: 1.5rem; margin-bottom: 16px;">Architecte de solutions numériques</h3>
-          <p style="color: var(--muted); margin-bottom: 24px;">En tant que développeur full-stack, je conçois des applications robustes, sécurisées et centrées sur l'expérience utilisateur, en mettant un point d'honneur à automatiser et optimiser chaque flux de données, du mobile au cloud.</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 16px;">Sécurité & développement, du code au réseau</h3>
+          <p style="color: var(--muted); margin-bottom: 24px;">Passionné de cybersécurité, j'intègre la sécurité à chaque étape de mes applications (authentification, chiffrement, durcissement des serveurs) et je pratique l'audit et les tests d'intrusion sur des environnements de laboratoire. Côté développement, je conçois des applications web et mobiles robustes, du backend au cloud.</p>
           
           <h4 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--brand-primary);">Coordonnées & Informations</h4>
           <div class="info_list">
@@ -195,11 +211,11 @@
           <!-- HUD Holographique d'informations en temps réel -->
           <div class="skills-3d-hud" id="skills3dHud">
             <div class="hud-header">
-              <span class="hud-title" id="hudTitle"><i class="fa-solid fa-mobile-screen"></i> Flutter</span>
-              <span class="hud-badge" id="hudCategory">mobile</span>
-              <span class="hud-level" id="hudLevel">90%</span>
+              <span class="hud-title" id="hudTitle"><i class="fa-solid fa-user-secret"></i> Kali Linux & Tests d'intrusion</span>
+              <span class="hud-badge" id="hudCategory">security</span>
+              <span class="hud-level" id="hudLevel">80%</span>
             </div>
-            <p class="hud-desc" id="hudDesc">Développement cross-platform iOS & Android, architecture Bloc/Provider, animations fluides.</p>
+            <p class="hud-desc" id="hudDesc">Reconnaissance, scans, analyse de vulnérabilités et exploitation contrôlée sur environnement de laboratoire.</p>
           </div>
         </div>
       </div>
@@ -207,6 +223,7 @@
       <!-- Filtres des Compétences -->
       <div class="filters fade" id="skillFilters" role="tablist" aria-label="Filtres de compétences">
         <button class="filter active" data-filter="all" role="tab">Toutes les compétences</button>
+        <button class="filter" data-filter="security" role="tab">Cybersécurité</button>
         <button class="filter" data-filter="mobile" role="tab">Mobile (Flutter / Dart)</button>
         <button class="filter" data-filter="backend" role="tab">Backend (Spring Boot / Django)</button>
         <button class="filter" data-filter="frontend" role="tab">Frontend & UI/UX</button>
@@ -356,6 +373,11 @@
       <p>© <span id="year"></span> Aliou AG Moussa Yattara — Tous droits réservés.</p>
     </div>
   </footer>
+
+  <!-- Three.js pour la scène immersive (chargé à la demande, le site fonctionne sans) -->
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
 
   <!-- Module JavaScript Principal -->
   <script type="module" src="js/main.js"></script>

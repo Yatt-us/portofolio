@@ -3,6 +3,41 @@
  * Intègre les coordonnées de style, couleurs 3D et descriptions pour le module 3D.
  */
 export const skillsData = [
+  // Cybersécurité (spécialité principale)
+  {
+    id: 'pentest',
+    name: "Kali Linux & Tests d'intrusion",
+    shortName: 'Kali',
+    category: 'security',
+    level: '80%',
+    color: '#367BF0',
+    accentColor: '#22d3ee',
+    icon: 'fa-solid fa-user-secret',
+    description: 'Reconnaissance, scans, analyse de vulnérabilités et exploitation contrôlée sur environnement de laboratoire.'
+  },
+  {
+    id: 'websec',
+    name: 'Sécurité Web (OWASP)',
+    shortName: 'OWASP',
+    category: 'security',
+    level: '80%',
+    color: '#0f766e',
+    accentColor: '#2dd4bf',
+    icon: 'fa-solid fa-shield-halved',
+    description: "OWASP Top 10, tests d'injection et de XSS, authentification JWT et sécurisation des APIs."
+  },
+  {
+    id: 'netsec',
+    name: 'Sécurité Réseau & Systèmes',
+    shortName: 'Réseau',
+    category: 'security',
+    level: '78%',
+    color: '#166534',
+    accentColor: '#22c55e',
+    icon: 'fa-solid fa-network-wired',
+    description: 'Analyse de trafic, pare-feu, durcissement de serveurs Linux et segmentation réseau.'
+  },
+
   // Mobile
   {
     id: 'flutter',
@@ -125,6 +160,7 @@ export const skillsData = [
   {
     id: 'devops',
     name: 'Git, Linux & Réseaux',
+    shortName: 'Git',
     category: 'cloud',
     level: '85%',
     color: '#F05032',

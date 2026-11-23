@@ -49,7 +49,7 @@
   border-radius: 50%;
   background: var(--gradient-main);
   z-index: -1;
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 25px rgba(var(--grad-glow-rgb), 0.5);
 }
 
 @keyframes pulseAvatarGlow {
@@ -148,7 +148,7 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), var(--gradient-glow-soft);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), var(--accent-glow-soft);
   z-index: 50;
   letter-spacing: 0.03em;
 }

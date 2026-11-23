@@ -252,7 +252,7 @@ export function initSkillsSphere3D() {
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
-      const label = node.skill.name.split(' ')[0];
+      const label = node.skill.shortName || node.skill.name.split(' ')[0];
       const textWidth = ctx.measureText(label).width;
       const boxPadX = 8;
       const boxPadY = 4;
